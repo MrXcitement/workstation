@@ -1,0 +1,11 @@
+---
+- name: Clone dotfiles
+  git: repo=https://github.com/mrxcitement/{{ item }} dest=~/src/{{ item }}
+  with_items: "{{ git_repos }}"
+
+- name: Install dotfiles
+  command: ~/src/{{ item }}/install
+  register: command_result
+  changed_when: command_result.stdout != ""
+  with_items: "{{ git_repos }}"
+

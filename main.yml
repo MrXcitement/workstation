@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: local
+
+  vars:
+    git_repos:
+      - dot-bash
+      - dot-vim
+      - dot-spacemacs
+      - dot-tmux
+
+  roles:
+      - dotfiles
